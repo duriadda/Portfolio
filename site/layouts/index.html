@@ -1,7 +1,7 @@
 {{ define "main" }}
-<main class="flex flex-row flex-wrap bg-gray-100 dark:bg-gray-700">
-  <section
-    class="w-full sm:w-2/5 flex flex-col justify-between bg-gray-300 dark:bg-gray-900"
+<main class="flex flex-row flex-wrap bg-page dark:bg-page-dark">
+  <div
+    class="w-full sm:w-2/5 flex flex-col justify-between bg-panel dark:bg-panel-dark"
   >
     <div>
       {{- partial "header.html" . -}}
@@ -10,21 +10,19 @@
         {{ partial "name.html" . }}
         {{ partial "profilePhoto" . }}
         {{ partial "aboutDesc" . }}
-        {{ partial "language.html" . }}
-        {{ partial "hobby.html" . }}
       </div>
     </div>
     {{- partial "footer.html" . -}}
-  </section>
+  </div>
 
-  <section class="w-full sm:w-3/5 p-3">
-    {{ partial "experience.html" . }}
+  <div class="w-full sm:w-3/5 p-3">
+    {{ partial "interests.html" . }}
     <hr />
-    {{ partial "education.html" . }}
+    {{ partial "goals.html" . }}
     <hr />
-    {{ partial "project.html" . }}
+    {{ partial "activity.html" . }}
     <hr />
     {{ partial "skill.html" . }}
-  </section>
+  </div>
 </main>
 {{ end }}
