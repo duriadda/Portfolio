@@ -6,6 +6,28 @@ disableKinds = ["taxonomy"]
 [build]
     writeStats = true
 
+# 상단 앵커 메뉴 (각 url은 index.html의 섹션 id와 일치해야 함)
+[[menu.main]]
+    name = "소개"
+    url = "#about"
+    weight = 10
+[[menu.main]]
+    name = "관심 분야"
+    url = "#interests"
+    weight = 20
+[[menu.main]]
+    name = "학습 목표"
+    url = "#goals"
+    weight = 30
+[[menu.main]]
+    name = "활동"
+    url = "#activities"
+    weight = 40
+[[menu.main]]
+    name = "역량"
+    url = "#skills"
+    weight = 50
+
 [params]
     title = "장현욱 | 포트폴리오"
     author = "장현욱"
