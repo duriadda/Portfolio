@@ -21,17 +21,16 @@
   {{ end }}
 
   <script>
-    const toggleTheme = (el) => {
-      const html = document.querySelector("html");
-      if (el.classList.contains("bi-lightbulb-off-fill")) {
-        el.classList.remove("bi-lightbulb-off-fill");
-        el.classList.add("bi-lightbulb-on-fill");
-        html.classList.add("dark");
-      } else {
-        el.classList.remove("bi-lightbulb-on-fill");
-        el.classList.add("bi-lightbulb-off-fill");
-        html.classList.remove("dark");
-      }
+    // 현재 테마를 html의 dark 클래스로 판단해 전환하고,
+    // 아이콘(실제 존재하는 bootstrap-icons 클래스)과 버튼 이름을 함께 갱신한다
+    const toggleTheme = (btn) => {
+      const dark = document.documentElement.classList.toggle("dark");
+      const icon = btn.querySelector("i");
+      icon.classList.toggle("bi-lightbulb-fill", dark);
+      icon.classList.toggle("bi-lightbulb-off-fill", !dark);
+      const label = dark ? "라이트 모드로 전환" : "다크 모드로 전환";
+      btn.setAttribute("aria-label", label);
+      btn.title = label;
     };
   </script>
 </head>
