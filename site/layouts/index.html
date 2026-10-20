@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ partial "nav.html" . }}
 <main class="flex flex-row flex-wrap bg-page dark:bg-page-dark">
   <div
     class="w-full sm:w-2/5 flex flex-col justify-between bg-panel dark:bg-panel-dark"
@@ -23,6 +24,9 @@
     {{ partial "activity.html" . }}
     <hr />
     {{ partial "skill.html" . }}
+    <p class="text-right mb-0">
+      <a href="#top">↑ 맨 위로</a>
+    </p>
   </div>
 </main>
 {{ end }}
