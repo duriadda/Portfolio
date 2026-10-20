@@ -1,0 +1,37 @@
+# 대표 활동 (P74–P79) 및 기타 활동
+title = "활동"
+
+# 대표 활동: 아래 항목이 각각 채점 기준 하나에 대응한다
+[featured]
+name = "Next Lab 무선통신 기술 연구"
+period = "26.01 ~ 현재"           # P74 수행 시기
+status = "진행 중"                          # P74 진행 상태
+purpose = "6G 환경에서 사용자 의도(Intent)를 예측해 필요한 데이터를 미리 캐싱함으로써 응답 지연을 줄이는 것"  # P75
+role = "KV Caching 파트 담당: 시뮬레이션 환경 구축과 성능 지표 측정 (논문은 연구실 공동 작업)"  # P76
+process = [                                  # P77 수행 단계
+  "논문 자료 분석",
+  "Toy Example로 파라미터, Metric 세부 조정",
+]
+choice_reason = "실제 6G 환경 대신 Toy Example로 먼저 검증해, 파라미터 영향을 빠르게 비교할 수 있었기 때문"   # P77 선택 이유
+outputs = [                                  # P78 산출물
+  "(중간 결과) Toy Example 기반 KV Caching 시뮬레이션 환경 구축 및 파라미터·Metric 조정 실험 진행",
+]
+
+lessons = [                                  # P79 배운 점
+  "논문 작성 과정에서 시뮬레이션 결과를 근거로 주장을 정리하는법과 피드백 하는 법을 익힘"
+]
+next = [
+  "다음 연구에서는 파라미터 세부 조정과 Metric 조정을 통해 원하는 결과를 얻어낼 수 있도록 하겠음."
+]
+# 기타 활동
+[[others]]
+name = "한국통신학회 학회지 원고 공동 집필"
+period = "2026.05 발행"
+status = "완료"
+description = "[AI-native 6G 네트워크 구조 및 기술 동향](https://www.kics.or.kr/html/?pmode=Bpublication&page=1&smode=view&seq=4850&searchValue=&searchTitle=strTitle) — 「정보와통신」 Vol.43 No.5, 공동저자 (최정우, 장현욱, 성지훈)"
+
+[[others]]
+name = "산학협력 인턴십 · 베스텔라랩 협업"
+period = "26.09.01 ~ 26.09.30"
+status = "완료"
+description = "연구 주제와 동일하게 KV Caching에 관련해 연구, 조사 후 기업 방문 세미나 진행"
