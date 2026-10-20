@@ -1,7 +1,14 @@
 <div class="flex flex-wrap">
   {{ range .Site.Params.social.list }}
-  <a href="{{ .url }}">
-    <i class="{{ .icon }} p-3 rounded hover:bg-page dark:hover:bg-page-dark"></i>
+  <!-- 아이콘만 있는 링크라 aria-label로 이동 대상을 알려준다 -->
+  <a
+    href="{{ .url }}"
+    aria-label="{{ .title }} (새 탭에서 열림)"
+    title="{{ .title }}"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i class="{{ .icon }} p-3 rounded hover:bg-page dark:hover:bg-page-dark" aria-hidden="true"></i>
   </a>
   {{ end }}
 </div>
