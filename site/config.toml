@@ -53,4 +53,4 @@ disableKinds = ["taxonomy"]
         [[params.social.list]]
         icon = "bi bi-github"
         url = "https://github.com/duriadda"
-        title = "GitHub"
+        title = "장현욱의 GitHub"

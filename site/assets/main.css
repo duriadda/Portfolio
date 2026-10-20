@@ -35,6 +35,10 @@
   body {
     font-family: "Barlow", sans-serif;
     line-height: 1.7;
+    /* 한글은 단어(어절) 단위로 줄바꿈하고,
+       공백 없는 긴 URL·영문은 영역을 넘치기 전에 강제로 줄바꿈한다 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   h1,
