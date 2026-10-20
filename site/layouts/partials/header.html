@@ -1,11 +1,19 @@
+{{- $dark := ne .Site.Params.theme "light" -}}
+{{- $label := cond $dark "라이트 모드로 전환" "다크 모드로 전환" -}}
 <header>
   <div class="py-4 flex items-center justify-between">
     {{ partial "social.html" . }}
     <div>
-      <i
-        class="p-2 icons toggle-theme cursor-pointer bi {{ if eq .Site.Params.theme `light` }}bi-lightbulb-off-fill{{ else }}bi-lightbulb-fill{{ end }} text-accent hover:text-accent-hover dark:text-accent-dark dark:hover:text-accent-dark-hover"
+      <!-- 키보드(Tab·Enter·Space)로 조작할 수 있도록 실제 button 요소 사용 -->
+      <button
+        type="button"
+        class="p-2 mr-1 rounded cursor-pointer text-accent hover:text-accent-hover dark:text-accent-dark dark:hover:text-accent-dark-hover"
+        aria-label="{{ $label }}"
+        title="{{ $label }}"
         onclick="toggleTheme(this)"
-      ></i>
+      >
+        <i class="bi {{ if $dark }}bi-lightbulb-fill{{ else }}bi-lightbulb-off-fill{{ end }}" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
   <hr />
