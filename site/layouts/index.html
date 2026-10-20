@@ -2,7 +2,7 @@
 {{ partial "nav.html" . }}
 <main class="flex flex-row flex-wrap bg-page dark:bg-page-dark">
   <div
-    class="w-full sm:w-2/5 flex flex-col justify-between bg-panel dark:bg-panel-dark"
+    class="w-full sm:w-2/5 lg:w-1/3 flex flex-col justify-between bg-panel dark:bg-panel-dark"
   >
     <div>
       {{- partial "header.html" . -}}
@@ -16,7 +16,7 @@
     {{- partial "footer.html" . -}}
   </div>
 
-  <div class="w-full sm:w-3/5 p-3">
+  <div class="w-full sm:w-3/5 lg:w-2/3 p-3 lg:px-10 lg:py-6">
     {{ partial "interests.html" . }}
     <hr />
     {{ partial "goals.html" . }}
