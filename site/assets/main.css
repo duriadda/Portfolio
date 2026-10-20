@@ -4,6 +4,21 @@
 @import "tailwindcss";
 @config './tailwind.config.js';
 
+/* 사이트 색상 팔레트 (원본 테마 썸네일 tn.png 기준)
+   라이트 모드 강조색은 밝은 배경에서 대비 4.5:1 이상이 되도록 어둡게 조정 */
+@theme {
+  --color-page: #f4f4f5;
+  --color-page-dark: #202124;
+  --color-panel: #e4e4e7;
+  --color-panel-dark: #2b2c30;
+  --color-ink: #18181b;
+  --color-ink-dark: #e8eaed;
+  --color-accent: #a04a00;
+  --color-accent-hover: #7a3800;
+  --color-accent-dark: #f39c12;
+  --color-accent-dark-hover: #f8c471;
+}
+
 @layer base {
   html {
     font-size: 18px;
@@ -66,7 +81,7 @@
   }
 
   a {
-    @apply text-blue-600 hover:text-blue-800 dark:text-yellow-300 dark:hover:text-yellow-500 underline;
+    @apply text-accent hover:text-accent-hover dark:text-accent-dark dark:hover:text-accent-dark-hover underline;
   }
 
   hr {
