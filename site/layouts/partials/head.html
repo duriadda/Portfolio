@@ -5,6 +5,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta name="description" content="{{ .Site.Params.description }}" />
   <meta name="author" content="{{ .Site.Params.author }}" />
+  <!-- 지정하지 않으면 브라우저가 도메인 루트의 /favicon.ico를 요청해 404가 난다 -->
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}" />
 
   {{ $css := resources.Get "main.css" | css.TailwindCSS }}
   {{ if hugo.IsProduction }}
