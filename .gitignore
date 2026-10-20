@@ -19,3 +19,4 @@ hugo_stats.json
 
 # 빌드할 때마다 재생성되는 통계 파일
 /site/hugo_stats.json
+/site/public/
