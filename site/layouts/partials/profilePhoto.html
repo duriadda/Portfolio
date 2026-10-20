@@ -1,9 +1,9 @@
-<div class="flex justify-center w-full mt-8">
-  <div class="w-4/5">
-    <img
-      class="my-0 rounded-full"
-      src="{{ .Site.Params.profile.photo | relURL }}"
-      alt="{{ .Site.Params.author }}"
-    />
-  </div>
+<div class="flex justify-center w-full mt-4">
+  <img
+    class="w-40 h-40 max-w-full rounded-full object-cover"
+    src="{{ .Site.Params.profile.photo | relURL }}"
+    alt="{{ .Site.Params.profile.photo_alt }}"
+    width="160"
+    height="160"
+  />
 </div>
