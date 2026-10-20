@@ -22,6 +22,14 @@
 @layer base {
   html {
     font-size: 18px;
+    scroll-behavior: smooth;
+  }
+
+  /* 동작 줄이기 설정을 켠 사용자에게는 부드러운 스크롤을 끈다 */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
