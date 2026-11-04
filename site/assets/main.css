@@ -32,6 +32,15 @@
     }
   }
 
+  /* 키보드 초점 테두리를 브라우저마다 다른 기본값 대신 사이트 강조색(주황)으로 통일한다 */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .dark :focus-visible {
+    outline-color: var(--color-accent-dark);
+  }
+
   /* 앵커 이동 후 초점을 받은 섹션 전체에 테두리가 그려지지 않게 한다 */
   [tabindex="-1"]:focus {
     outline: none;
