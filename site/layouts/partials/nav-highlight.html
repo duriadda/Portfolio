@@ -1,0 +1,48 @@
+<script>
+  // 지금 보고 있는 섹션의 메뉴에 aria-current="location"을 붙인다(스타일은 nav.html, 화면 낭독기도 "현재 위치"로 읽음)
+  (() => {
+    const links = [...document.querySelectorAll('nav[aria-label="주요 메뉴"] a[href^="#"]')];
+    const items = links
+      .map((link) => ({ link, section: document.getElementById(link.getAttribute("href").slice(1)) }))
+      .filter((item) => item.section);
+    if (!items.length) return;
+
+    const isVisible = (el) => {
+      const r = el.getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    };
+
+    const update = () => {
+      // 메뉴로 이동해 주소에 #섹션이 있고 그 섹션이 화면에 보이면 그것을 우선한다
+      // (페이지 끝의 짧은 섹션은 화면 위까지 올라오지 못하기 때문)
+      let active = items.find((item) => "#" + item.section.id === location.hash && isVisible(item.section));
+      if (!active) {
+        // 그 밖에는 화면 위쪽 기준선을 지난 섹션 중 기준선에 가장 가까운 것
+        const line = 120;
+        active = items
+          .filter((item) => item.section.getBoundingClientRect().top <= line)
+          .sort((a, b) => b.section.getBoundingClientRect().top - a.section.getBoundingClientRect().top)[0];
+      }
+      for (const item of items) {
+        if (item === active) item.link.setAttribute("aria-current", "location");
+        else item.link.removeAttribute("aria-current");
+      }
+    };
+
+    let queued = false;
+    const schedule = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        update();
+      });
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("popstate", schedule);
+    document.addEventListener("click", () => setTimeout(schedule, 0));
+    window.addEventListener("load", update);
+    update();
+  })();
+</script>
