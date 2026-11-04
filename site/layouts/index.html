@@ -1,6 +1,13 @@
 {{ define "main" }}
+<!-- 키보드 사용자가 첫 Tab에서 메뉴를 건너뛰고 본문으로 갈 수 있게 한다.
+     초점을 받을 때만 메뉴 위에 한 줄로 나타나며, 겹쳐 띄우지 않아 메뉴를 가리지 않는다 -->
+<a
+  href="#main"
+  class="sr-only focus:not-sr-only focus:block focus:px-6 focus:py-3 focus:bg-panel dark:focus:bg-panel-dark"
+  >본문으로 건너뛰기</a
+>
 {{ partial "nav.html" . }}
-<main class="flex flex-row flex-wrap bg-page dark:bg-page-dark">
+<main id="main" class="flex flex-row flex-wrap bg-page dark:bg-page-dark">
   <div
     class="w-full sm:w-2/5 lg:w-1/3 flex flex-col justify-between bg-panel dark:bg-panel-dark"
   >
