@@ -4,7 +4,7 @@
     {{ range .Site.Menus.main }}
     <li>
       <a
-        class="block px-3 py-2 rounded no-underline hover:underline hover:bg-page dark:hover:bg-page-dark"
+        class="block px-3 py-2 rounded no-underline hover:underline hover:bg-page dark:hover:bg-page-dark aria-[current=location]:font-semibold aria-[current=location]:underline aria-[current=location]:bg-page dark:aria-[current=location]:bg-page-dark"
         href="{{ .URL }}"
         >{{ .Name }}</a
       >
