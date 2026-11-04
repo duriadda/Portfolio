@@ -40,17 +40,11 @@
       if (!scrollToHash(location.hash, false)) window.scrollTo(0, 0);
     });
 
-    // 페이지를 불러온 방식에 따라 처음 위치를 정한다(웹폰트·이미지로 높이가 바뀐 뒤 맞추도록 load 이후 실행)
-    //  - 새로고침: 주소의 #을 지우고 맨 위 처음 화면
-    //  - 직접 접근·외부 링크: #섹션으로 이동 (초점은 옮기지 않음)
+    // 직접 접근·외부 링크로 #주소가 있으면 해당 섹션으로 이동한다
+    // (웹폰트·이미지로 높이가 바뀐 뒤 맞추도록 load 이후 실행, 초점은 옮기지 않음)
+    // 새로고침은 head의 reload-top.html이 #을 미리 지우므로 여기서는 이동하지 않는다
     window.addEventListener("load", () => {
-      const nav = performance.getEntriesByType("navigation")[0];
-      if (nav && nav.type === "reload") {
-        if (location.hash) history.replaceState(null, "", location.pathname + location.search);
-        window.scrollTo(0, 0);
-      } else if (location.hash) {
-        scrollToHash(location.hash, false, false);
-      }
+      if (location.hash) scrollToHash(location.hash, false, false);
     });
   })();
 </script>
