@@ -7,6 +7,7 @@
   <meta name="author" content="{{ .Site.Params.author }}" />
   {{- partial "favicon.html" . }}
   {{- partial "theme-init.html" . }}
+  {{- partial "reload-top.html" . }}
 
   {{ $css := resources.Get "main.css" | css.TailwindCSS }}
   {{ if hugo.IsProduction }}
