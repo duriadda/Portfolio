@@ -1,0 +1,18 @@
+<script>
+  // 새로고침하면 맨 위 처음 화면으로 간다.
+  // 브라우저는 본문을 읽는 동안 주소의 #섹션으로 먼저 스크롤하므로,
+  // 본문보다 앞(head)에서 #을 지워 그 이동 자체가 일어나지 않게 한다.
+  (() => {
+    const nav = performance.getEntriesByType("navigation")[0];
+    if (!nav || nav.type !== "reload") return;
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+    // 브라우저가 저장해 둔 스크롤 위치를 늦게 복원하는 경우까지 맨 위로 되돌린다
+    const toTop = () => window.scrollTo(0, 0);
+    document.addEventListener("DOMContentLoaded", toTop);
+    window.addEventListener("load", () => {
+      toTop();
+      requestAnimationFrame(toTop);
+    });
+  })();
+</script>
