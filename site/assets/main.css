@@ -32,6 +32,11 @@
     }
   }
 
+  /* 앵커 이동 후 초점을 받은 섹션 전체에 테두리가 그려지지 않게 한다 */
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+
   body {
     font-family: "Barlow", sans-serif;
     line-height: 1.7;
