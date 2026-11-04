@@ -1,6 +1,6 @@
 <!--
   같은 페이지 앵커(#about 등) 이동을 스크립트로 처리한다.
-  - macOS Safari에서 링크를 꾹 누르면(Force Click) 뜨는 미리보기 창을 막는다.
+  - 부드러운 스크롤 후 해당 섹션으로 초점을 옮긴다.
   - 새로고침하면 맨 위 처음 화면, 다른 곳에서 #주소로 들어오면 해당 섹션을 보여준다.
   스크립트가 없어도 기존 href="#..." 링크로 동작하고, 뒤로 가기·직접 URL 접근도 유지된다.
 -->
@@ -38,11 +38,6 @@
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     window.addEventListener("popstate", () => {
       if (!scrollToHash(location.hash, false)) window.scrollTo(0, 0);
-    });
-
-    // Safari(macOS) Force Click 미리보기 차단: WebKit 전용 이벤트로, 다른 브라우저에서는 발생하지 않는다
-    document.addEventListener("webkitmouseforcewillbegin", (event) => {
-      if (event.target.closest('a[href^="#"]')) event.preventDefault();
     });
 
     // 페이지를 불러온 방식에 따라 처음 위치를 정한다(웹폰트·이미지로 높이가 바뀐 뒤 맞추도록 load 이후 실행)
