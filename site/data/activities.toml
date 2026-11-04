@@ -23,6 +23,14 @@ lessons = [                                  # P79 배운 점
 next = [
   "다음 연구에서는 파라미터 세부 조정과 Metric 조정을 통해 원하는 결과를 얻어낼 수 있도록 하겠음."
 ]
+# 동아리 (period·status·role·description은 값이 있을 때만 표시)
+[[clubs]]
+name = "WHO 멘토 활동"
+period = "2026년 1학기 ~ 2학기"
+status = "진행 중"
+role = "멘토 — 1학기 C언어·Python, 2학기 C언어"
+description = "멘티들에게 각 언어의 기초 과정을 알려줌"
+
 # 기타 활동
 [[others]]
 name = "한국통신학회 학회지 원고 공동 집필"
