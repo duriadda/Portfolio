@@ -1,0 +1,32 @@
+# 학교 시스템 바로가기 (전북대학교 홈페이지 메뉴에서 확인한 주소, 2026-11-04 접속 확인)
+title = "학교 시스템 바로가기"
+
+[[list]]
+name = "전북대학교 홈페이지"
+description = "학교 공지와 학사 일정"
+url = "https://www.jbnu.ac.kr/web/index.do"
+icon = "bi-bank"
+
+[[list]]
+name = "PORTAL"
+description = "수강신청·성적 등 학사 서비스"
+url = "https://portal.jbnu.ac.kr"
+icon = "bi-person-badge"
+
+[[list]]
+name = "LMS"
+description = "강의 자료와 과제 제출"
+url = "https://lms.jbnu.ac.kr/"
+icon = "bi-journal-text"
+
+[[list]]
+name = "도서관"
+description = "자료 검색과 열람실"
+url = "https://dl.jbnu.ac.kr/"
+icon = "bi-book"
+
+[[list]]
+name = "웹메일"
+description = "학교 메일"
+url = "https://mail.jbnu.ac.kr"
+icon = "bi-envelope"
