@@ -27,6 +27,10 @@ disableKinds = ["taxonomy"]
     name = "역량"
     url = "#skills"
     weight = 50
+[[menu.main]]
+    name = "학교 시스템"
+    url = "#school"
+    weight = 60
 
 [params]
     title = "장현욱 | 포트폴리오"
