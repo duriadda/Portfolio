@@ -1,0 +1,4 @@
+<!-- 지정하지 않으면 브라우저가 도메인 루트의 /favicon.ico를 요청해 404가 난다 -->
+<!-- SVG를 지원하지 않는 브라우저용 PNG를 먼저, 지원하는 브라우저가 고르는 SVG를 뒤에 둔다 -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}" />
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}" />
