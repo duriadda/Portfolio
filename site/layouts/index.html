@@ -17,6 +17,8 @@
   </div>
 
   <div class="w-full sm:w-3/5 lg:w-2/3 p-3 lg:px-10 lg:py-6">
+    <!-- 초광폭 화면에서 한 줄이 지나치게 길어지지 않도록 본문 폭을 64rem(기준 글자 18px → 1152px)으로 제한 -->
+    <div class="max-w-5xl">
     {{ partial "interests.html" . }}
     <hr />
     {{ partial "goals.html" . }}
@@ -29,6 +31,7 @@
     <p class="text-right mb-0">
       <a href="#top">↑ 맨 위로</a>
     </p>
+    </div>
   </div>
 </main>
 {{ end }}
