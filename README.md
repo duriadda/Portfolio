@@ -17,10 +17,18 @@ Hugo 테마 [sada](https://github.com/darshanbaral/sada)로 만든 1페이지 �
 │   ├── data/                   섹션별 내용
 │   │   ├── interests.toml      관심 분야
 │   │   ├── goals.toml          학습 목표
-│   │   ├── activities.toml     대표 활동·기타 활동
-│   │   └── skills.toml         역량과 적용 사례
+│   │   ├── activities.toml     대표 활동·동아리·기타 활동
+│   │   ├── skills.toml         역량과 적용 사례
+│   │   └── school_links.toml   학교 시스템 바로가기 카드
 │   ├── layouts/                HTML 템플릿 (index.html, 404.html, partials/)
-│   ├── assets/main.css         색상 팔레트·기본 스타일 (Tailwind CSS v4)
+│   │   └── partials/           섹션별 템플릿과 스크립트
+│   │       ├── nav.html            상단 메뉴
+│   │       ├── anchor-nav.html     메뉴 클릭 시 부드러운 이동·뒤로 가기 처리
+│   │       ├── nav-highlight.html  현재 보고 있는 섹션 메뉴 강조
+│   │       ├── reload-top.html     새로고침하면 맨 위 처음 화면
+│   │       ├── theme-init.html     첫 화면 테마 결정 (저장값 > 운영체제 설정)
+│   │       └── theme-toggle.html   테마 전환 버튼 동작·선택 저장
+│   ├── assets/main.css         색상 팔레트·기본 스타일·초점 테두리 (Tailwind CSS v4)
 │   └── static/                 이미지·favicon (그대로 복사됨)
 ├── .github/workflows/hugo-pages.yml   배포 워크플로
 ├── .github/pages_build.py      Actions에서 쓰는 빌드 스크립트
@@ -76,7 +84,8 @@ hugo server --config config.toml,pages.json
    | 상단 메뉴 | `site/config.toml`의 `[[menu.main]]` |
    | GitHub 등 링크 | `site/config.toml`의 `[[params.social.list]]` |
    | 프로필 이미지 | `site/static/images/avatar.webp` + `config.toml`의 `photo`, `photo_alt` |
-   | 관심 분야 / 학습 목표 / 활동 / 역량 | `site/data/*.toml` |
+   | 관심 분야 / 학습 목표 / 활동·동아리 / 역량 | `site/data/*.toml` (동아리는 `activities.toml`의 `[[clubs]]`) |
+   | 학교 시스템 바로가기 카드 | `site/data/school_links.toml` (name, description, url, icon) |
    | 색상 | `site/assets/main.css`의 `@theme` |
    | 섹션 배치 | `site/layouts/index.html` |
 
@@ -94,6 +103,17 @@ hugo server --config config.toml,pages.json
 
 배포 설정: 저장소 Settings → Pages → Build and deployment → Source = **GitHub Actions**
 
+## 점검과 문제 해결 기록
+
+배포 사이트는 Chrome headless를 DevTools 프로토콜로 조작해 네트워크 응답, Console 오류, 화면 폭별 넘침, Tab 순서를 자동으로 확인했고, 메뉴 이동·새로고침은 Safari에서 직접 확인했습니다.
+
+| 증상 | 원인 | 조치 |
+|---|---|---|
+| Console에 `/favicon.ico` 404 | 아이콘 지정이 없어 브라우저가 도메인 루트로 요청 | `favicon.svg`·`favicon-32.png` 지정 (`partials/favicon.html`) |
+| 로컬 `hugo server`에서 `Can't resolve './tailwind.config.js'` | 한글 경로의 NFD/NFC 표기 차이 | `env -u PWD`로 실행 (위 "로컬에서 실행하기") |
+| Safari에서 메뉴를 누르면 목적지 내용이 하얀 상자로 표시 | Safari **확장 프로그램** (개인정보 보호 창에서는 정상) | 사이트 결함 아님. 확인은 확장을 끈 창에서 |
+| 섹션으로 이동한 뒤 새로고침하면 그 위치에 머묾 | 브라우저가 본문을 읽으며 주소의 `#섹션`으로 먼저 스크롤 | 새로고침이면 `<head>` 단계에서 `#` 제거 (`partials/reload-top.html`) |
+
 ## 출처와 이용 조건
 
 | 항목 | 출처 | 구분 | 이용 조건 |
@@ -104,7 +124,9 @@ hugo server --config config.toml,pages.json
 | 웹폰트 | [Google Fonts](https://fonts.google.com/) Barlow, Brawler | 외부 | SIL Open Font License |
 | 프로필 아바타 `avatar.webp` | [Chiikawa Wallpaper – 세이렌](https://chiikawawallpaper.com/ko/mobile-wallpaper/siren) (비공식 팬 사이트) | 외부 | 캐릭터 「치이카와」의 권리는 원작 권리자에게 있음. 비상업적 과제 사이트의 아바타로만 사용 |
 | 학회지 링크 | [한국통신학회 「정보와통신」 Vol.43 No.5](https://www.kics.or.kr/html/?pmode=Bpublication&page=1&smode=view&seq=4850&searchValue=&searchTitle=strTitle) | 외부 링크 | 링크만 사용 |
+| 학교 시스템 바로가기 주소 | [전북대학교 홈페이지](https://www.jbnu.ac.kr/web/index.do) 메뉴의 링크 (2026-11-04 접속 확인) | 외부 링크 | 링크만 사용 |
+| favicon (`favicon.svg`, `favicon-32.png`) | 직접 제작 (SVG 작성 후 Chrome으로 32px PNG 렌더링) | 직접·AI | — |
 | 사이트 문구(`site/data/`, `config.toml`) | 본인 작성 | 직접 | 일부 문장은 AI(Claude) 제안을 검토·수정해 반영 |
-| 레이아웃 수정·추가 파일 (메뉴, 섹션 partial, 404, favicon, 색상) | 본인 + AI(Claude Code) 협업 | 직접·AI | 변경 내역은 커밋 이력 참고 |
+| 레이아웃 수정·추가 파일 (메뉴, 섹션 partial, 스크립트, 404, 색상) | 본인 + AI(Claude Code) 협업 | 직접·AI | 변경 내역은 커밋 이력 참고 |
 
 테마 원본의 영문 README는 `site/README.md`에 그대로 남겨 두었습니다.
