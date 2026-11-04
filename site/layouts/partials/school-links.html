@@ -1,0 +1,31 @@
+{{- with hugo.Data.school_links }}
+<section id="school" class="mb-8">
+  <h2>
+    <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+    {{ .title }}
+  </h2>
+  <!-- 박스 전체가 하나의 링크라 어디를 눌러도 이동하고, Tab 한 번에 카드 하나씩 선택된다 -->
+  <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 list-none ml-0 mb-0">
+    {{ range .list }}
+    <li>
+      <a
+        href="{{ .url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex h-full items-start gap-3 p-4 rounded border border-gray-400 dark:border-gray-600 bg-panel dark:bg-panel-dark no-underline transition-colors hover:border-accent dark:hover:border-accent-dark"
+      >
+        <i class="bi {{ .icon }} text-2xl leading-none" aria-hidden="true"></i>
+        <span class="flex flex-col">
+          <span class="font-semibold">
+            {{ .name }}
+            <i class="bi bi-arrow-up-right text-sm" aria-hidden="true"></i>
+            <span class="sr-only">(새 탭에서 열림)</span>
+          </span>
+          <span class="text-sm text-ink dark:text-ink-dark">{{ .description }}</span>
+        </span>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{- end }}
